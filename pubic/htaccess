@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Se o arquivo ou diretório solicitado existir, sirva-o diretamente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Caso contrário, redirecione tudo para index.php da raiz
+    RewriteRule ^ index.php [QSA,L]
+    
+</IfModule>
+
+<IfModule mime_module>
+    AddHandler application/x-httpd-ea-php82 .php .php7 .phtml
+</IfModule>
+
+<IfModule mod_php.c>
+    php_value upload_max_filesize 25M
+    php_value post_max_size 30M
+</IfModule>
+
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php82 .php .php8 .phtml
+</IfModule>
